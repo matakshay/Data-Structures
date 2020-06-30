@@ -110,6 +110,74 @@ class trie
     }
 
 
+	//   Remove all occurrences of given string in the Trie
+	//   Do nothing If trie is empty, given string is empty or Trie doesn't contain given string
+	//
+	//   Worst case Time Complexity: O(length of string)
+	//   Best case Time Complexity:  O(1)
+	//
+    void removeAll (string &s)
+    {
+        if (size == 0) return;
+        if (s.size() == 0) return;
+        if (!contains(s)) return;
+
+        node* temp = string_to_node[s];
+
+        if (temp->count_words == 0) return;
+        else
+        {
+            size -= (temp->count_words);
+            temp->count_words = 0;
+            string_to_node.erase(s);
+            node_to_string.erase(temp);
+
+            removeEmptyNodes (temp);
+        }
+    }
+
+
+	//	Return true if given string s (and length of s > 0) is present in the tree.
+	//	Return false in all other cases
+	//
+	//	Time Complexity:	O(1)
+	//
+    bool contains (string &s)
+    {
+        if (size==0) return false;
+        if (s.size()==0) return false;
+
+        if (string_to_node.count(s)>0) return true;
+        else return false;
+    }
+
+
+	//	Set the root to NULL node (discard the earlier trie and set it to a new one)
+	//
+	//	Time Complexity:	O(number of nodes)
+	//
+    void clear ()
+    {
+		freeMem(root);
+		root = new node (NULL);
+        size = 0;
+        node_to_string.clear();
+        string_to_node.clear();
+    }
+
+
+	//	Return the count of occurrences of given string in the Trie
+	//
+	//	Time Complexity:	O(1)
+	//
+    int count (string& s)
+    {
+        if (size==0 || string_to_node.count(s)==0) return 0;
+
+        return string_to_node[s]->count_words;
+    }
+
+
 	//	Return total number of strings stored in the Trie
 	//
 	//	Time Complexity:	O(1)
