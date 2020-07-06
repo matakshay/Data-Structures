@@ -4,9 +4,12 @@
  *      Public Methods-    * BST ()
  *                         * void insert (const T key, const U value=NULL)
  *                         * void remove (const T key)
+ *                         * int size ()
+ *                         * bool consists (const T key)
+ *                         * U value (const T key)
  */
 
-#include "node.hpp"
+ #include "node.hpp"
 
 template <typename T, typename U>
 class BST
@@ -60,6 +63,22 @@ class BST
         }
     }
 
+    bool consistsNode (node <T, U>* &n, const T key)
+    {
+        if (n==NULL) return false;
+        else if (n->key < key)  return consistsNode (n->right, key);
+		else if (n->key > key)  return consistsNode (n->left, key);
+		else return true;
+    }
+
+    U getValue (node <T, U>* &n, const T key)
+    {
+        if (n==NULL) return NULL;
+        else if (n->key < key)  return getValue (n->right, key);
+		else if (n->key > key)  return getValue (n->left, key);
+		else return n->value;
+    }
+
     void destroy (node <T, U>* &n)
     {
         if (n->left!=NULL) destroy(n->left);
@@ -93,5 +112,20 @@ class BST
     void remove (const T key)
     {
         removeNode (this->root, key);
+    }
+
+    int size ()
+    {
+        return this->SIZE;
+    }
+
+    bool consists (const T key)
+    {
+        return consistsNode (this->root, key);
+    }
+
+    U value (const T key)
+    {
+        return getValue(this->root, key);
     }
 };
