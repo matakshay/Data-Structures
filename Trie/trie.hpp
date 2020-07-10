@@ -1,18 +1,6 @@
 //
 //   TRIE IMPLEMENTATION
 //
-//   Public Functions:   void insert (string)
-//                       void remove (string)
-//                       void removeAll (string)
-//                       bool contains (string)
-//                       void clear ()
-//                       int count (string)
-//                       int totalWords ()
-//                       int uniqueWords ()
-//
-//   This trie implementation distinguishes characters only on the basis of their ASCII values.
-//   This trie can be used to store any string made of ASCII characters.
-//
 
 #include <iostream>
 #include <string>
@@ -41,12 +29,6 @@ class trie
 	}
 
 
-	//	Insert a string in the Trie
-	//	Do nothing if string is empty
-	//
-	//	Time Complexity:    O(length of string) if string was not originally present in the Trie
-	//					    O(1) if string was originally present in the Trie
-	//
     void insert (string &s)
     {
         if (s.size()==0) return;
@@ -77,16 +59,9 @@ class trie
         ++(temp->count_words);
 
         string_to_node[s] = temp;
-        node_to_string[temp] = s;
     }
 
 
-	//	Remove given string from the Trie
-	//	Do nothing If trie is empty, given string is empty or Trie doesn't contain given string
-	//
-	//	Worst case Time Complexity:	O(length of string)
-	//	Best case Time Complexity:  O(1)
-	//
     void remove (string &s)
     {
         if (size == 0) return;
@@ -103,19 +78,12 @@ class trie
 			if (temp->count_words==0)
 			{
 				string_to_node.erase(s);
-				node_to_string.erase(temp);
 				removeEmptyNodes (temp);
 			}
 		}
     }
 
 
-	//   Remove all occurrences of given string in the Trie
-	//   Do nothing If trie is empty, given string is empty or Trie doesn't contain given string
-	//
-	//   Worst case Time Complexity: O(length of string)
-	//   Best case Time Complexity:  O(1)
-	//
     void removeAll (string &s)
     {
         if (size == 0) return;
@@ -130,18 +98,12 @@ class trie
             size -= (temp->count_words);
             temp->count_words = 0;
             string_to_node.erase(s);
-            node_to_string.erase(temp);
 
             removeEmptyNodes (temp);
         }
     }
 
 
-	//	Return true if given string s (and length of s > 0) is present in the tree.
-	//	Return false in all other cases
-	//
-	//	Time Complexity:	O(1)
-	//
     bool contains (string &s)
     {
         if (size==0) return false;
@@ -152,24 +114,15 @@ class trie
     }
 
 
-	//	Set the root to NULL node (discard the earlier trie and set it to a new one)
-	//
-	//	Time Complexity:	O(number of nodes)
-	//
     void clear ()
     {
 		freeMem(root);
 		root = new node (NULL);
         size = 0;
-        node_to_string.clear();
         string_to_node.clear();
     }
 
 
-	//	Return the count of occurrences of given string in the Trie
-	//
-	//	Time Complexity:	O(1)
-	//
     int count (string& s)
     {
         if (size==0 || string_to_node.count(s)==0) return 0;
@@ -178,29 +131,22 @@ class trie
     }
 
 
-	//	Return total number of strings stored in the Trie
-	//
-	//	Time Complexity:	O(1)
-	//
     int totalWords ()
     {
         return size;
     }
 
 
-	//	Return total number of unique strings stored in the Trie
-	//
-	//	Time Complexity:	O(1)
-	//
     int uniqueWords ()
     {
         return string_to_node.size();
     }
 
+
  private:
 
 	//	Helper function for "remove"
-	//	Traverse the Trie upwards and removes nodes which are not part of any word
+	//	Traverse the Trie upwards and removes the nodes which are not part of any word
 	//
     void removeEmptyNodes (node* &n)
     {
@@ -236,6 +182,5 @@ class trie
 
     node* root;
     int size; 											// Stores the count of total number of words stored in the Trie
-    unordered_map <string, node*> string_to_node; 		// Stores a pointer to the corresponding ending node for each string stored in the Trie
-    unordered_map <node*, string> node_to_string; 		// Stored the string corresponding to each terminal node
+    unordered_map <string, node*> string_to_node; 		// Stores a pointer to the corresponding terminal node for each unique string stored in the Trie
 };
