@@ -50,3 +50,15 @@ In this implementation, each node of the Binary Search Tree stores a key and val
         </p>
     </li>
 </ul>
+
+<h2>To Do</h2>
+<ul>
+    <li>
+        Add copy constructor and overload the copy assignment operator for BST
+    </li>
+</ul>
+
+<h2>Acknowledgement</h2>
+<p align="justify">
+    I studied and referred many articles from the <a href="https://en.cppreference.com/w/">C++ Reference Documentation</a>, <a href="https://www.geeksforgeeks.org/">GeeksforGeeks</a> and <a href="https://www.wikipedia.org/">Wikipedia</a> while writing the code and preparing this document.
+</p>
