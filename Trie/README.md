@@ -80,3 +80,18 @@ In this implementation, a single trie object can store multiple copies of the sa
         </p>
     </li>
 </ul>
+
+<h2>To Do</h2>
+<ul>
+    <li>
+        Add a method which inputs a string and returns lexicographically the next string stored in the Trie
+    </li>
+    <li>
+        Add copy constructor and overload the copy assignment operator for Trie
+    </li>
+</ul>
+
+<h2>Acknowledgement</h2>
+<p align="justify">
+    I studied and referred many articles from the <a href="https://en.cppreference.com/w/">C++ Reference Documentation</a>, <a href="https://www.geeksforgeeks.org/">GeeksforGeeks</a> and <a href="https://www.wikipedia.org/">Wikipedia</a> while writing the code and preparing this documentation.
+</p>
