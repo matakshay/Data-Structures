@@ -54,6 +54,27 @@ class AVLTree : public BST <T, U>
        return getValue(this->root, key);
     }
 
+
+    void printPreorder()
+    {
+        preOrder (this->root);
+        cout << endl;
+    }
+
+
+    void printInorder()
+    {
+        inOrder (this->root);
+        cout << endl;
+    }
+
+
+    void printPostorder()
+    {
+        postOrder (this->root);
+        cout << endl;
+    }
+
  protected:
 
     AVL_node <T, U>* root;
@@ -218,5 +239,35 @@ class AVLTree : public BST <T, U>
         else if (n->key < key)  return getValue (n->right, key);
 		else if (n->key > key)  return getValue (n->left, key);
 		else return n->value;
+    }
+
+
+    void preOrder(AVL_node <T, U>* n)
+    {
+        if (n==NULL) return;
+        
+        cout<<"("<<n->key<<","<<n->value<<"), ";
+        preOrder (n->left);
+        preOrder (n->right);
+    }
+
+
+    void inOrder (AVL_node <T, U>* n)
+    {
+        if (n==NULL) return;
+
+        inOrder (n->left);
+        cout<<"("<<n->key<<","<<n->value<<"), ";
+        inOrder (n->right);
+    }
+
+
+    void postOrder(AVL_node <T, U>* n)
+    {
+        if (n==NULL) return;
+
+        preOrder (n->left);
+        preOrder (n->right);
+        cout<<"("<<n->key<<","<<n->value<<"), ";
     }
 };
