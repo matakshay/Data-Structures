@@ -50,6 +50,24 @@ AVL Tree is a variant of the Binary Search Tree which uses rotation operations t
             Time Complexity: Logarithmic in the number of nodes in the AVL Tree
         </p>
     </li>
+    <li>
+        <h5><code>void printPreorder ()</code></h5>
+        <p align="justify">
+            Prints the PreOrder traversal of the AVL Tree
+        </p>
+    </li>
+    <li>
+        <h5><code>void printInorder ()</code></h5>
+        <p align="justify">
+            Prints the InOrder traversal of the AVL Tree
+        </p>
+    </li>
+    <li>
+        <h5><code>void printPostorder ()</code></h5>
+        <p align="justify">
+            Prints the PostOrder traversal of the AVL Tree
+        </p>
+    </li>
 </ul>
 <h2>To Do</h2>
 <ul>
