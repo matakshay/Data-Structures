@@ -59,6 +59,27 @@ class BST
        return getValue(this->root, key);
     }
 
+
+    void printPreorder()
+    {
+        preOrder (this->root);
+        cout << endl;
+    }
+
+
+    void printInorder()
+    {
+        inOrder (this->root);
+        cout << endl;
+    }
+
+
+    void printPostorder()
+    {
+        postOrder (this->root);
+        cout << endl;
+    }
+
  protected:
 
     node <T, U>* root;
@@ -127,7 +148,7 @@ class BST
 		else if (n->key > key)  return getValue (n->left, key);
 		else return n->value;
     }
-    
+
 
     void destroy (node <T, U>* &n)
     {
@@ -135,5 +156,35 @@ class BST
         if (n->right!=NULL) destroy(n->right);
 
         delete n;
+    }
+
+
+    void preOrder(node <T, U>* n)
+    {
+        if (n==NULL) return;
+
+        cout<<"("<<n->key<<","<<n->value<<"), ";
+        preOrder (n->left);
+        preOrder (n->right);
+    }
+
+
+    void inOrder (node <T, U>* n)
+    {
+        if (n==NULL) return;
+
+        inOrder (n->left);
+        cout<<"("<<n->key<<","<<n->value<<"), ";
+        inOrder (n->right);
+    }
+
+
+    void postOrder(node <T, U>* n)
+    {
+        if (n==NULL) return;
+
+        preOrder (n->left);
+        preOrder (n->right);
+        cout<<"("<<n->key<<","<<n->value<<"), ";
     }
 };
