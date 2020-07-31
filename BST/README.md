@@ -49,6 +49,24 @@ In this implementation, each node of the Binary Search Tree stores a key and val
             Time Complexity: Linear in the height of the BST
         </p>
     </li>
+    <li>
+        <h5><code>void printPreorder ()</code></h5>
+        <p align="justify">
+            Prints the PreOrder traversal of the BST
+        </p>
+    </li>
+    <li>
+        <h5><code>void printInorder ()</code></h5>
+        <p align="justify">
+            Prints the InOrder traversal of the BST
+        </p>
+    </li>
+    <li>
+        <h5><code>void printPostorder ()</code></h5>
+        <p align="justify">
+            Prints the PostOrder traversal of the BST
+        </p>
+    </li>
 </ul>
 
 <h2>To Do</h2>
